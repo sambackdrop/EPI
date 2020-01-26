@@ -99,10 +99,18 @@ public class IsListCyclic {
   }
 
   public static void main(String[] args) {
-    System.exit(
-        GenericTest
-            .runFromAnnotations(args, "IsListCyclic.java",
-                                new Object() {}.getClass().getEnclosingClass())
-            .ordinal());
+	  
+	  ListNode<Integer> node7 = new ListNode(7,null);
+	  ListNode<Integer> node3 = new ListNode(3,new ListNode(4,
+			  new ListNode(5,new ListNode(6,node7))));
+	  node7.next = node3;
+	  ListNode<Integer> head = new ListNode(1,new ListNode(2,node3 ));
+	  ListNode<Integer> res = hasCycle(head);
+	  System.out.println(res.data);
+//    System.exit(
+//        GenericTest
+//            .runFromAnnotations(args, "IsListCyclic.java",
+//                                new Object() {}.getClass().getEnclosingClass())
+//            .ordinal());
   }
 }
